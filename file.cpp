@@ -20,7 +20,7 @@ file::file(string filename){
   string currentLine;
   ifstream fileContents;
   fileContents.open(fileLoc);
-  fileLength = 3;
+  fileLength = getSize();
   contents = new string[fileLength];
 
   for(int i = 0; i < fileLength; i++){
@@ -33,6 +33,19 @@ void file::printFile(){
   for(int i = 0; i < fileLength; i++){
     cout << contents[i] << endl;
   }
+}
+
+int file::getSize(){
+  string currentLine = "a";
+  ifstream fileContents;
+  fileContents.open(fileLoc);
+  int fileLength = 0;
+
+  while(!fileContents.eof()){
+    getline(fileContents, currentLine);
+    fileLength++;
+  }
+  return fileLength;
 }
 
 bool file::compareDelimeters(char delim1, char delim2){

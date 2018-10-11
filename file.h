@@ -18,6 +18,7 @@ class file
 
 
     bool isDelimeter(char delimeter);
+    int getSize();
     bool isClosingDelimeter(char delimeter);
     bool isOpeningDelimeter(char delimeter);
     void printFile();
