@@ -1,4 +1,5 @@
 #include "file.h"
+#include <fstream>
 #include <iostream>
 
 
@@ -8,10 +9,19 @@ int main(int argc, char** argv){
   int choice;
   string filename;
 
-  while(repeat == true){
+  while(repeat == true){//Program Loop
   cout << "Enter the name of the file you want to analyze" << endl;
   cin >> filename;
   cout << "" << endl;
+  ifstream isValid;
+  isValid.open(filename);
+  while(isValid.fail()){
+    cout << "Error, file does not exsist, enter another filename" << endl;
+    cin >> filename;
+    cout << "" << endl;
+    isValid.open(filename);
+  }
+  isValid.close();
   file test(filename);
   test.analyzeDelimeters();
   cout << "" << endl;
